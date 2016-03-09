@@ -5,7 +5,7 @@
 
 require_relative './blueberry/terra'
 require_relative './blueberry/user_input'
-require_relative './logger'
+require_relative './blueberry/logger'
 include Logging
 
 begin
