@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "<%= @hostname %>" {
-  ami                         = "" ## Ubuntu-14.04.03-Puppet4-OneVol
+  ami                         = ""
   associate_public_ip_address = true
   iam_instance_profile        = "webserver"
   instance_type               = "m4.large"
