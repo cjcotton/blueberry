@@ -1,0 +1,7 @@
+# These are the security groups that should be defined by AWS.
+# Each 3 will be evaluated against CLI input.
+keys:
+  access: "testacess"
+  secret: "testsecret"
+
+region: "us-west-test"

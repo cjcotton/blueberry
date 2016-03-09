@@ -1,0 +1,26 @@
+provider "aws" {
+  access_key = "<%= @access_key %>"
+  secret_key = "<%= @secret_key %>"
+  region     = "<%= @def_region %>"
+}
+
+resource "aws_instance" "<%= @hostname %>" {
+  ami                         = "" ## Ubuntu-14.04.03-Puppet4-OneVol
+  associate_public_ip_address = true
+  iam_instance_profile        = "webserver"
+  instance_type               = "m4.large"
+  subnet_id                   = ""
+  vpc_security_group_ids      = [""]
+  tags {
+    Name = "<%= @hostname %>"
+    "Product Name" = ""
+  }
+}
+
+resource "aws_route53_record" "<%= @hostname %>-dns" {
+  zone_id = ""
+  name    = "sub.domain.com"
+  type    = "A"
+  ttl     = "60"
+  records = [ "${aws_instance.<%= @hostname %>.public_ip}" ]
+}
