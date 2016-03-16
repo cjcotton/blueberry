@@ -39,7 +39,7 @@ class Terraform
   # user input and which template should be used.
   def determine_role()
     templates = []
-    Dir.foreach(@relative_path + "/../blueberry/templates/") do |item|
+    Dir.foreach(File.join(@relative_path, '..', 'blueberry', 'templates')) do |item|
       next if item == '.' or item == '..'
       templates << item.gsub(".erb", '').downcase # + "\n"
     end
@@ -47,7 +47,7 @@ class Terraform
 
     template_folder = "/templates/"
     if templates.include?(@role.downcase)
-      template_path = @relative_path + template_folder + @role + ".erb"
+      template_path = File.join(@relative_path, template_folder, @role + '.erb')
     else
       logger.fatal "Unable to find role: #{@role}. Try options --list to verify it exists."
       abort
